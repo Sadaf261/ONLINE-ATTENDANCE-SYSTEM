@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Student Registration</h1>
+    <form action="/student-register" method="POST">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <label>Roll Number:</label><br>
+        <input type="text" name="roll_number" required><br><br>
+
+        <label>Course:</label><br>
+        <select name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="BCA">BCA</option>
+            <option value="B.Sc CS">B.Sc CS</option>
+            <option value="B.Com">B.Com</option>
+            <option value="BA">BA</option>
+            <option value="BBA">BBA</option>
+        </select><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

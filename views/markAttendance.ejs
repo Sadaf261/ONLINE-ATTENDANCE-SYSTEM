@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    
+    <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+<% } %>
+
+    <form action="/mark-attendance" method="POST">
+
+        <label for="student_id">Student:</label>
+    <select name="student_id" id="student_id" required>
+        <% students.forEach(function(student) { %>
+            <option value="<%= student.student_id %>"><%= student.name %></option>
+        <% }); %>
+    </select><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="">--Select--</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select><br><br>
+
+        <button type="submit">Mark Attendance</button>
+    </form>
+    <script src="/formValidation.js"></script>
+</body>
+</html>

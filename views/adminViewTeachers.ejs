@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Teachers</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>All Teachers</h1>
+    <table border="1">
+        <tr>
+            <th>Teacher ID</th><th>Name</th><th>Email</th><th>Subject</th>
+        </tr>
+        <% teachers.forEach(teacher => { %>
+            <tr>
+                <td><%= teacher.teacher_id %></td>
+                <td><%= teacher.name %></td>
+                <td><%= teacher.email %></td>
+                <td><%= teacher.subject %></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

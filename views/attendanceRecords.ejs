@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Attendance Records</h1>
+    <a href="/view-attendance-records" class="btn">View Records</a>
+    <a href="/logout" class="btn">Logout</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Roll Number</th>
+            <th>Student ID</th>
+            <th>Marked At</th>
+            <th>Status</th>
+        </tr>
+        <% records.forEach(record => { %>
+            <tr>
+                <td><%= record.id %></td>
+                <td><%= record.name %></td>
+                <td><%= record.roll_number %></td>
+                <td><%= record.student_id %></td>
+                <td><%= record.marked_at %></td>
+                <td><%= record.status %></td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

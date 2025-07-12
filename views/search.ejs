@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Attendance</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Search Attendance</h1>    
+
+<!-- search.ejs -->
+ 
+<form action="/search-attendance" method="GET">
+    <input type="text" name="name" placeholder="Enter Name" required>
+    <button type="submit">Search</button>
+</form>
+
+<!-- Display search results if available -->
+<% if (typeof attendanceRecords !== 'undefined') { %>
+    <% if (attendanceRecords.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% attendanceRecords.forEach(function(record) { %>
+                    <tr>
+                        <td><%= record.student_name %></td>
+                        <td><%= record.date %></td>
+                        <td><%= record.status %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No records found</p>
+    <% } %>
+<% } %>
+</body>
+</html>

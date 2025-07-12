@@ -1,0 +1,123 @@
+/* Reset default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #e8f5e9); /* blue-green mix */
+    color: #333;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #1565c0; /* Blue shade */
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: #388e3c; /* Green shade */
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+  
+  a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #2196f3; /* Bright blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a:hover {
+    background-color: #1976d2; /* Darker blue on hover */
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #388e3c;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.2); /* blue shadow */
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="date"],
+  form select {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  form button {
+    background-color: #388e3c; /* Green */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #2e7d32; /* Darker green */
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f1f1f1;
+  }
+  
+  tr:hover {
+    background-color: #e3f2fd;
+  }
+
+  

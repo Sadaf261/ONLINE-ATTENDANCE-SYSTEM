@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h2>Your Attendance Records</h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Status</th>
+  </tr>
+  <% if (attendanceData.length === 0) { %>
+    <tr>
+      <td colspan="2">No attendance records found.</td>
+    </tr>
+  <% } else { %>
+    <% attendanceData.forEach(record => { %>
+      <tr>
+        <td><%= record.date.toISOString().split('T')[0] %></td>
+        <td><%= record.status %></td>
+      </tr>
+    <% }) %>
+  <% } %>
+</table>
+</body>
+</html>

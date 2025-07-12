@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Attendance</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Filter Attendance</h1>
+    <form method="POST" action="/filter-attendance">
+        <label>Student ID:</label>
+        <input type="text" name="student_id" placeholder="Enter Student ID"  value="<%= typeof student_id !== 'undefined' ? student_id : '' %>" />
+
+        <label>Date:</label>
+        <input type="date" name="date" value="<%= typeof date !== 'undefined' ? date : '' %>"/>
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <% if (typeof records !== 'undefined' && records.length > 0) { %>
+        <table border="1" style="margin-top:20px;">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Student ID</th>
+                <th>Marked At</th>
+            </tr>
+            <% records.forEach(record => { %>
+                <tr>
+                    <td><%= record.id %></td>
+                    <td><%= record.name %></td>
+                    <td><%= record.roll_number %></td>
+                    <td><%= record.student_id %></td>
+                    <td><%= record.marked_at %></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } else if (typeof records !== 'undefined') { %>
+        <p>No records found.</p>
+    <% } %>
+</body>
+</html>
