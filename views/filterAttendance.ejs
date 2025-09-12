@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Filter Attendance</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <h1>Filter Attendance</h1>
+<h1>Filter Attendance</h1>
     <form method="POST" action="/filter-attendance">
         <label>Student ID:</label>
         <input type="text" name="student_id" placeholder="Enter Student ID"  value="<%= typeof student_id !== 'undefined' ? student_id : '' %>" />
@@ -37,6 +30,12 @@
         </table>
     <% } else if (typeof records !== 'undefined') { %>
         <p>No records found.</p>
-    <% } %>
+    <% } %><!DOCTYPE html>
+<html>
+<head>
+    <title>Filter Attendance</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
 </body>
 </html>
