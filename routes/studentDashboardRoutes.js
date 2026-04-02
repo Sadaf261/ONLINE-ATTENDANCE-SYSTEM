@@ -20,10 +20,19 @@ router.get('/student-dashboard', studentAuth, (req, res) => {
     db.query(query, [studentId], (err, results) => {
         if (err) {
             console.error(err);
+            if (req.accepts('json')) return res.status(500).json({ error: 'Database error' });
             return res.send('Database error');
         }
 
         const totalAttendance = results[0].total;
+
+        if (req.accepts('json')) {
+            return res.json({
+                studentName: req.session.student.name,
+                rollNumber: req.session.student.roll_number || 'N/A',
+                totalAttendance: totalAttendance
+            });
+        }
 
         res.render('studentDashboard', {
             title: "Student Dashboard",

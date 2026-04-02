@@ -16,11 +16,21 @@ router.get('/admin-dashboard', adminAuth, (req, res) => {
     const getTeacherCount = 'SELECT COUNT(*) AS totalTeachers FROM teacher';
 
     db.query(getStudentCount, (err, studentResult) => {
-        if (err) return res.send('Error fetching student count');
+        if (err) return res.status(500).json({ error: 'Error fetching student count' });
 
         db.query(getTeacherCount, (err2, teacherResult) => {
-            if (err2) return res.send('Error fetching teacher count');
+            if (err2) return res.status(500).json({ error: 'Error fetching teacher count' });
 
+            // Return JSON for API requests
+            if (req.accepts('json')) {
+                return res.json({
+                    adminName: req.session.admin.name,
+                    totalStudents: studentResult[0].totalStudents,
+                    totalTeachers: teacherResult[0].totalTeachers
+                });
+            }
+            
+            // Render EJS for browser requests
             res.render('adminDashboard', {
                 title: "Admin Dashboard",
                 adminName: req.session.admin.name,

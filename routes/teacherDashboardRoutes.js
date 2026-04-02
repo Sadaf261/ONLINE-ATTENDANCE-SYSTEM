@@ -18,10 +18,19 @@ router.get('/teacher-dashboard', teacherAuth, (req, res) => {
     db.query(query, (err, result) => {
         if (err) {
             console.error(err);
+            if (req.accepts('json')) return res.status(500).json({ error: 'Database error' });
             return res.send('Database error');
         }
 
         const totalStudents = result[0].totalStudents;
+
+        if (req.accepts('json')) {
+            return res.json({
+                teacherName: req.session.teacher.name,
+                subject: req.session.teacher.subject || 'N/A',
+                totalStudents: totalStudents
+            });
+        }
 
         res.render('teacherDashboard', {
             title: "Teacher Dashboard",

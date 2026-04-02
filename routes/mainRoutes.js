@@ -15,9 +15,11 @@ router.get('/admin-login', (req, res) => {
 router.post('/admin-login', (req, res) => {
     const { email, password } = req.body;
     db.query('SELECT * FROM admin WHERE email = ?', [email], async (err, results) => {
-        if (err) return res.send("Error occurred");
+        if (err) {
+            if (req.accepts('json')) return res.status(500).json({ error: "Error occurred" });
+            return res.send("Error occurred");
+        }
         if (results.length > 0) {
-            
             if (password === results[0].password) {
                 req.session.admin = {
                     id: results[0].id,
@@ -25,13 +27,19 @@ router.post('/admin-login', (req, res) => {
                     email: results[0].email
                 };
                 req.session.save(()=>{
+                    if (req.accepts('json')) {
+                        return res.json({ message: "Login successful", redirect: '/admin-dashboard' });
+                    }
                     res.redirect('/admin-dashboard');
                 });
-                
             } else {
+                if (req.accepts('json')) return res.status(401).json({ error: "Invalid Admin Credentials." });
                 return res.send("Invalid Admin Credentials.");
             }
-        } 
+        } else {
+            if (req.accepts('json')) return res.status(401).json({ error: "Admin not found" });
+            return res.send("Admin not found");
+        }
     });
 });
 
@@ -43,9 +51,11 @@ router.get('/teacher-login', (req, res) => {
 router.post('/teacher-login', (req, res) => {
     const { email, password } = req.body;
     db.query('SELECT * FROM teacher WHERE email = ?', [email], async (err, results) => {
-        if (err) return res.send("Error occurred");
+        if (err) {
+            if (req.accepts('json')) return res.status(500).json({ error: "Error occurred" });
+            return res.send("Error occurred");
+        }
         if (results.length > 0) {
-            
             if (password === results[0].password) {
                 req.session.teacher = {
                     id: results[0].teacher_id,
@@ -53,13 +63,19 @@ router.post('/teacher-login', (req, res) => {
                     email: results[0].email
                 };
                 req.session.save(()=>{
+                    if (req.accepts('json')) {
+                        return res.json({ message: "Login successful", redirect: '/teacher-dashboard' });
+                    }
                     res.redirect('/teacher-dashboard');
                 });
-                
             } else {
+                if (req.accepts('json')) return res.status(401).json({ error: "Invalid Teacher Credentials." });
                 return res.send("Invalid Teacher Credentials.");
             }
-        } 
+        } else {
+            if (req.accepts('json')) return res.status(401).json({ error: "Teacher not found" });
+            return res.send("Teacher not found");
+        }
     });
 });
 
@@ -75,9 +91,11 @@ router.get('/student-login', (req, res) => {
 router.post('/student-login', (req, res) => {
     const { email, password } = req.body;
     db.query('SELECT * FROM student WHERE email = ?', [email], async (err, results) => {
-        if (err) return res.send("Error occurred");
+        if (err) {
+            if (req.accepts('json')) return res.status(500).json({ error: "Error occurred" });
+            return res.send("Error occurred");
+        }
         if (results.length > 0) {
-            
             if (password === results[0].password) {
                 req.session.student = {
                     id: results[0].student_id,
@@ -85,13 +103,19 @@ router.post('/student-login', (req, res) => {
                     email: results[0].email
                 };
                 req.session.save(()=>{
+                    if (req.accepts('json')) {
+                        return res.json({ message: "Login successful", redirect: '/student-dashboard' });
+                    }
                     res.redirect('/student-dashboard');
                 });
-                
             } else {
+                if (req.accepts('json')) return res.status(401).json({ error: "Invalid Student Credentials." });
                 return res.send("Invalid Student Credentials.");
             }
-        } 
+        } else {
+            if (req.accepts('json')) return res.status(401).json({ error: "Student not found" });
+            return res.send("Student not found");
+        }
     });
 });
 
